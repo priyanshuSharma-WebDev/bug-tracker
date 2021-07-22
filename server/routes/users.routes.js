@@ -10,7 +10,8 @@ const jwt = require("jsonwebtoken")
 const sendingMail = require("../utils/sending.email");
 const isAdmin = require("../middleware/isAdmin");
 const projectsModal = require("../models/projects.model");
-const updateUserProperty = require("../utils/updateUserProp")
+const updateUserProperty = require("../utils/updateUserProp");
+const bugsModal = require("../models/bugs.model");
 
 
 /**
@@ -373,11 +374,12 @@ Router.patch("/update", Authentication, async (req, res, next) => {
 })
 
 Router.delete("/delete", Authentication, async (req, res, next) => {
+    const {projectId} = req.body;
     try {
         await req.user.remove()
-        res.json({
-            message: "User deleted successfully"
-        })
+        await bugsModal.deleteMany({ owner: req.user._id });
+        await projectsModal.deleteOne({_id: projectId})
+        res.json(req.user)
     }
     catch (e) {
         next(e)

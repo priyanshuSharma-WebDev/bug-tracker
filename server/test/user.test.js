@@ -41,13 +41,17 @@ test('should send signup email to the user.',async () => {
 })
 
 test('should login existing user',async () => {
-    await request(app)
+    const response = await request(app)
     .post('/api/users/login')
     .send({
         email_username: user.email,
         password: user.password
     })
     .expect(200)
+    const loginUser = await userModal.findById(response.body.user._id)
+    expect(response.body.token).toBe(loginUser.tokens[1].token)
+
+   
 })
 
 test('should not login existing user',async () => {
@@ -77,11 +81,13 @@ test('should not fetch user profile.',async () => {
 
 
 test('should delete user account.',async () => {
-   await request(app)
+   const response = await request(app)
    .delete('/api/users/delete')
    .set("Authorization",`Bearer ${user.tokens[0].token}`)
    .send()
    .expect(200)
+   const deleteUser = await userModal.findById(response.body._id)
+   expect(deleteUser).toBeNull()
 })
 
 
