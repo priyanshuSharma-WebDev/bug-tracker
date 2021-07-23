@@ -99,6 +99,53 @@ test('should not delete account for UnAuthenticate user.',async () => {
  })
 
 
+ test('should post profile pic.',async () => {
+     await request(app)
+     .post('/api/users/avatar')
+     .set("Authorization",`Bearer ${user.tokens[0].token}`)
+     .attach('upload','test/fixtures/profile.jpg')
+     .expect(200)
+
+     const getUser = await userModal.findById(USER_ID)
+     expect(getUser.avatar).toEqual(expect.any(Buffer))
+ })
+
+
+ test('should update user information fields.',async () => {
+     const response = await request(app)
+        .patch('/api/users/update')
+        .set("Authorization",`Bearer ${user.tokens[0].token}`)
+        .send({
+            username: "edit test",
+            fullName: "BOOM BOOM BOOM"
+        })
+        .expect(200)
+
+    const {username,fullName} = await userModal.findById(response.body._id)
+    expect({username,fullName}).toEqual({
+        username: "edit test",
+        fullName: "BOOM BOOM BOOM"
+    })
+ })
+
+ test('should failed to update user information fields when user send invalid properties.',async () => {
+    await request(app)
+    .patch('/api/users/update')
+    .set("Authorization",`Bearer ${user.tokens[0].token}`)
+    .send({
+        email: "somerandomemail@gmail.com"
+    })
+    .expect(400)
+ })
+
+ test("should failed to update user information fields when user doesn't send any data.",async () => {
+    await request(app)
+    .patch('/api/users/update')
+    .set("Authorization",`Bearer ${user.tokens[0].token}`)
+    .send({})
+    .expect(400)
+ })
+
 
 // this test is for admin users
 

@@ -15,16 +15,16 @@ const bugsModal = require("../models/bugs.model");
 
 
 /**
- * [*] /POST /create - create a user
- * [*] /GET /me/:id - get a user 
+ * [*] /POST /create - create a user 😎
+ * [*] /GET /me/:id - get a user 😎
  * [*] /PATCH /update/:id - update a user 
- * [*] /DELETE /delete/:id  - delete a user
- * [*] /POST /login - login a user 
+ * [*] /DELETE /delete/:id  - delete a user 😎
+ * [*] /POST /login - login a user 😎
  * [*] /POST /logout - logout a user 
  * [*] /POST /logoutAll - logout user with all devices
  * [*] Add maximum device limits
  * [*] create relation between user and bugs
- * [*] /POST /avatar - Add file upload
+ * [*] /POST /avatar - Add file upload 😎
  * [*] /GET /confirm/account/:token - Add email sending
  * [*] /PUT /forget-password - Forgot password
  * [*] /GET / get all users
@@ -84,11 +84,11 @@ Router.get("/me", Authentication, async (req, res, next) => {
  * Get all users related to a project this route is only accesable by admin
  * - :id = project id
  */
-Router.get("/all/users/:id",Authentication, isAdmin,async (req,res,next) => {
+Router.get("/all/users/:id", Authentication, isAdmin, async (req, res, next) => {
     const id = req.params.id
     try {
         const project = await projectsModal.findById(id)
-        if(!project.users.length) {
+        if (!project.users.length) {
             throw new BadRequest("You haven't created any user yet")
         }
         const projectUsers = await userModal.find({
@@ -98,33 +98,33 @@ Router.get("/all/users/:id",Authentication, isAdmin,async (req,res,next) => {
         })
         res.json(projectUsers)
     }
-    catch(e) {
+    catch (e) {
         next(e)
     }
 })
 
-Router.delete("/delete/user/:project_id",Authentication, isAdmin, async (req,res,next) => {
+Router.delete("/delete/user/:project_id", Authentication, isAdmin, async (req, res, next) => {
     const projectId = req.params.project_id
-    const {userId} = req.body
+    const { userId } = req.body
     try {
         let project = await projectsModal.findById(projectId)
-        if(!project) {
+        if (!project) {
             throw new NotFound("project not found")
         }
         project.users = project.users.filter(_id => _id.toString() !== userId.toString())
         await project.save();
         let user = await userModal.findById(userId)
-        if(!user) {
+        if (!user) {
             // throw internal server error
             throw new Error("User not found")
         }
-        const updateProp = {isHaveProject: false}
-        await updateUserProperty(user,updateProp).save()
+        const updateProp = { isHaveProject: false }
+        await updateUserProperty(user, updateProp).save()
         res.json({
             message: "user deleted successfully"
         })
     }
-    catch(e) {
+    catch (e) {
         next(e)
     }
 })
@@ -225,14 +225,14 @@ Router.put("/reset-password", Authentication, async (req, res, next) => {
         let user = await userModal.findOne({ resettingLink: resetLink })
         // I could remove token form client side when user reset password first time or update resettingLink to 
         // the empty string form server side and that's approach I will take
-        if(!user) {
+        if (!user) {
             throw new UnAuthorized("User already reset password, Please generate new token.")
         }
         const updateProp = {
             password: encryptedPassword,
             resettingLink: ""
         }
-        await updateUserProperty(user,updateProp).save()
+        await updateUserProperty(user, updateProp).save()
         res.json({
             message: "Password update successfully"
         })
@@ -244,35 +244,35 @@ Router.put("/reset-password", Authentication, async (req, res, next) => {
 })
 
 
-Router.put("/change-password",Authentication, async (req,res,next) => {
+Router.put("/change-password", Authentication, async (req, res, next) => {
     const user = req.user;
-    const {oldPassword,newPassword} = req.body;
+    const { oldPassword, newPassword } = req.body;
     try {
-        const isVerified = await bcrypt.compare(oldPassword,user.password)
-        if(!isVerified) {
+        const isVerified = await bcrypt.compare(oldPassword, user.password)
+        if (!isVerified) {
             throw new UnAuthorized("Old password did not match.")
         }
         const updateProp = {
             password: newPassword
         }
-        await updateUserProperty(req.user,updateProp).save()
+        await updateUserProperty(req.user, updateProp).save()
         res.json({
             message: "password updated successfully."
         })
     }
-    catch(e) {
+    catch (e) {
         next(e)
     }
 })
 
 
 
-Router.put("/change-email",Authentication, async (req,res,next) => {
+Router.put("/change-email", Authentication, async (req, res, next) => {
     const user = req.user;
-    const {password,newEmail} = req.body;
+    const { password, newEmail } = req.body;
     try {
-        const isVerified = await bcrypt.compare(password,user.password)
-        if(!isVerified) {
+        const isVerified = await bcrypt.compare(password, user.password)
+        if (!isVerified) {
             throw new UnAuthorized("Password did not match.")
         }
         const token = jwt.sign(
@@ -281,26 +281,26 @@ Router.put("/change-email",Authentication, async (req,res,next) => {
                 exp: Math.floor(Date.now() / 1000) + (60 * 60),
                 email: newEmail
             }, process.env.JWT_SECRET)
-            const mailUser = {
-                email: newEmail,
-                title: "Verify your email",
-                body: `
+        const mailUser = {
+            email: newEmail,
+            title: "Verify your email",
+            body: `
                 <h1>Please click to verify your email.</h1>
                 <p>${process.env.HOST}/api/users/change-email/save/${token}</p>
                 `
-            }
-            sendingMail(mailUser)
+        }
+        sendingMail(mailUser)
         res.json({
             message: "Verify your email."
         })
     }
-    catch(e) {
+    catch (e) {
         next(e)
     }
 })
 
 
-Router.get("/change-email/save/:token",Authentication, async (req,res,next) => {
+Router.get("/change-email/save/:token", Authentication, async (req, res, next) => {
     const token = req.params.token;
     let data = {}
     try {
@@ -313,12 +313,12 @@ Router.get("/change-email/save/:token",Authentication, async (req,res,next) => {
         const updateProp = {
             email: data.email
         }
-        await updateUserProperty(req.user,updateProp).save()
+        await updateUserProperty(req.user, updateProp).save()
         res.json({
             message: "Email changed successfully"
         })
     }
-    catch(e) {
+    catch (e) {
         next(e)
     }
 })
@@ -356,10 +356,14 @@ Router.post("/logoutAll", Authentication, async (req, res, next) => {
 
 
 Router.patch("/update", Authentication, async (req, res, next) => {
-    const keys = Object.keys(req.body);
-    const updateableProps = ["username", "fullName", "email", "password"]
-    const isValid = keys.every(key => updateableProps.includes(key))
+
     try {
+        if (!Object.keys(req.body).length && req.body.constructor === Object) {
+            throw new BadRequest("Input fields cannot be empty.")
+        }
+        const keys = Object.keys(req.body);
+        const updateableProps = ["username", "fullName"]
+        const isValid = keys.every(key => updateableProps.includes(key))
         if (!isValid) {
             throw new BadRequest("Some invalid propety found in request")
         }
@@ -374,11 +378,11 @@ Router.patch("/update", Authentication, async (req, res, next) => {
 })
 
 Router.delete("/delete", Authentication, async (req, res, next) => {
-    const {projectId} = req.body;
+    const { projectId } = req.body;
     try {
         await req.user.remove()
         await bugsModal.deleteMany({ owner: req.user._id });
-        await projectsModal.deleteOne({_id: projectId})
+        await projectsModal.deleteOne({ _id: projectId })
         res.json(req.user)
     }
     catch (e) {
