@@ -198,6 +198,7 @@ Router.post("/create", Authentication, upload.single('upload'), async (req, res,
         if (!project) {
             throw new NotFound("Project not found")
         }
+
         if (!req.user.isHaveProject) {
             throw new BadRequest("First create or join to a project")
         }
