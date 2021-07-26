@@ -30,6 +30,7 @@ Router.post("/create",Authentication, async (req,res,next) => {
             isAdmin: true,
             isHaveProject: true
         }
+        
         await updateUserProperty(req.user,updateProp).save()
         const project = new projectsModal({
             ...req.body,

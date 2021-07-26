@@ -9,7 +9,6 @@ const Authentication = require("../auth/JWT.auth");
 const projectsModal = require("../models/projects.model");
 const multer = require("multer")
 const sharp = require("sharp")
-const mongoose = require("mongoose")
 const _ = require("lodash")
 const Router = express.Router();
 
@@ -25,7 +24,8 @@ const Router = express.Router();
  *   [*] /GET "/user/bugs" - get all bugs of a perticular user
  *   [*] /GET "/bugs" - get all bugs with in whole application - catch "only readonly format"
  *   [*] /POST "/bugUpload" - upload images related to the bug
- *   TODO - [] - filtering data
+ *   [*] - filtering data
+ *   TODO - [] Add a comment section in a bug
  */
 
 /**
@@ -208,7 +208,7 @@ Router.post("/create", Authentication, upload.single('upload'), async (req, res,
          */
         const isAllowed = project.users.find(({ _id }) => _id.equals(req.user._id))
         if (!isAllowed) {
-            throw new BadRequest("You don't have permission to create any bug, please create a project or join to a project")
+            throw new Unauthorized("You don't have permission to create any bug, please create a project or join to a project")
         }
         /**
          * User will send project Id from frontend
@@ -219,8 +219,22 @@ Router.post("/create", Authentication, upload.single('upload'), async (req, res,
             project: project_id,
             bugUpload: req.file !== undefined ? await sharp(req.file.buffer).resize({ widht: 1000, height: 1000 }).png().toBuffer(): undefined
         })
+        const keys = {
+            _id: null,
+            title: null,
+            description: null,
+            severity: null,
+            submittedBy: null,
+            assignedTo: null,
+            viewStatus: null,
+            priority: null,
+            project: null,
+            resolved: null,
+            assigned: null
+        }
         await bug.save();
-        res.status(201).json(bug)
+        var result = _.pick(bug, _.keys(keys));
+        res.status(201).json(result)
     }
     catch (e) {
         next(e)
