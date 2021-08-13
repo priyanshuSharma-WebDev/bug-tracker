@@ -15,7 +15,7 @@ const Router = express.Router()
  * /GET "/" - get all projects
  * /GET "/project/:id" - get project by id
  * /DELETE "/delete/project/:id" - delete a project
- * /GET "/leave/project/:id" - leave a project
+ * /GET "/leave/project/:id" - leave from a project
  */
 
 Router.post("/create",Authentication, async (req,res,next) => {
@@ -178,8 +178,14 @@ Router.post("/leave/project/:id",async (req,res,next) => {
             throw new NotFound("Project not found")
         }
         project.users = project.users.filter(_id => _id.toString() !== userId.toString())
-        await project.save()
+        if(!project.users.length) {
+            throw new BadRequest("This project has only one member if you want to abonded this project than it's better to delete this shit.")
+        } 
         const user = await userModal.findById(userId)
+        if(user.isAdmin) {
+            throw new BadRequest("You are not allowed to leave this project it's better to delete this shit.")
+        }
+        await project.save()
         if(!user) {
             throw new Error("User not found, Internal server error.")
         }

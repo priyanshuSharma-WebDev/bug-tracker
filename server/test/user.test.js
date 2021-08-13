@@ -9,6 +9,7 @@ const {
 
 beforeEach(setupDatabase)
 
+
 test('should send signup email to the user.',async () => {
     await request(app)
     .post('/api/users/create')
