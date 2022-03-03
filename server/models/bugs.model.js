@@ -66,7 +66,7 @@ const BugsSchema = mongoose.Schema({
     },
     assigned: {
         type: Boolean,
-        default: false 
+        default: false
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
@@ -81,11 +81,11 @@ const BugsSchema = mongoose.Schema({
     bugUpload: {
         type: Buffer
     }
-},{
+}, {
     timestamps: true
 })
 
 
-const bugsModal = mongoose.model('bug',BugsSchema);
+const bugsModal = mongoose.model('bug', BugsSchema);
 
 module.exports = bugsModal

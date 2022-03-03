@@ -40,16 +40,16 @@ Router.get("/", async (req, res, next) => {
     const match = {}
     let parts = []
     try {
-        if(req.query.resolved) {
+        if (req.query.resolved) {
             match.resolved = req.query.resolved === 'true'
         }
-        if(req.query.sort) {
+        if (req.query.sort) {
             parts = req.query.sort.split(":")
         }
-        const bugs = await bugsModal.find(match,{bugUpload: 0})
-        .limit(parseInt(req.query.limit))
-        .skip(parseInt(req.query.skip))
-        .sort([[parts.length ? parts[0]: 'createdAt', parts.length ? parts[1] === 'asc'? 1: -1: 1]])
+        const bugs = await bugsModal.find(match, { bugUpload: 0 })
+            .limit(parseInt(req.query.limit))
+            .skip(parseInt(req.query.skip))
+            .sort([[parts.length ? parts[0] : 'createdAt', parts.length ? parts[1] === 'asc' ? 1 : -1 : 1]])
         res.json(bugs);
     }
     catch (e) {
@@ -75,13 +75,13 @@ Router.get("/project/bugs/:id", Authentication, async (req, res, next) => {
     const sort = {}
     try {
         const project = await projectsModal.findById(id)
-        if(req.query.resolved) {
+        if (req.query.resolved) {
             match.resolved = req.query.resolved === 'true'
         }
-        if(req.query.sort) {
+        if (req.query.sort) {
             const parts = req.query.sort.split(":")
             console.log(parts)
-            sort[parts[0]] = parts[1] === 'asc'? 1: -1
+            sort[parts[0]] = parts[1] === 'asc' ? 1 : -1
         }
         if (!project) {
             throw new NotFound("Project not found")
@@ -91,12 +91,12 @@ Router.get("/project/bugs/:id", Authentication, async (req, res, next) => {
             select: 'title description severity\
             submittedBy assignedTo viewStatus\
              priority project resolved assigned',
-             match,
-             options: {
-                 limit: parseInt(req.query.limit),
-                 skip: parseInt(req.query.skip),
-                 sort
-             }
+            match,
+            options: {
+                limit: parseInt(req.query.limit),
+                skip: parseInt(req.query.skip),
+                sort
+            }
         }).execPopulate()
         res.json(project.projectBugs)
     }
@@ -126,16 +126,16 @@ Router.get("/user/bugs", Authentication, async (req, res, next) => {
     try {
         const user = req.user
         match.owner = user._id
-        if(req.query.resolved) {
+        if (req.query.resolved) {
             match.resolved = req.query.resolved === 'true'
         }
-        if(req.query.sort) {
+        if (req.query.sort) {
             parts = req.query.sort.split(":")
         }
         const userBugs = await bugsModal.find(match, { bugUpload: 0 })
-        .limit(parseInt(req.query.limit))
-        .skip(parseInt(req.query.skip))
-        .sort([[parts.length ? parts[0]: 'createdAt', parts.length ? parts[1] === 'asc'? 1: -1: 1]])
+            .limit(parseInt(req.query.limit))
+            .skip(parseInt(req.query.skip))
+            .sort([[parts.length ? parts[0] : 'createdAt', parts.length ? parts[1] === 'asc' ? 1 : -1 : 1]])
         res.json(userBugs)
     }
     catch (e) {
@@ -217,7 +217,7 @@ Router.post("/create", Authentication, upload.single('upload'), async (req, res,
             ...formData,
             owner: req.user._id,
             project: project_id,
-            bugUpload: req.file !== undefined ? await sharp(req.file.buffer).resize({ widht: 1000, height: 1000 }).png().toBuffer(): undefined
+            bugUpload: req.file !== undefined ? await sharp(req.file.buffer).resize({ widht: 1000, height: 1000 }).png().toBuffer() : undefined
         })
         const keys = {
             _id: null,
