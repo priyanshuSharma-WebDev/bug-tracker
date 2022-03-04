@@ -4,6 +4,13 @@
 */
 
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
 
 @font-face {
   font-family: "ProximaNova-Regular.otf";
@@ -45,7 +52,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	font-family: "ProximaNova-Regular.otf";
+  font-family: "Proxima\ Nova\ Alt\ Bold.otf";
+  min-height: calc(100vh - 52px);
+	background-color: #18171F;
 }
 ol, ul {
 	list-style: none;
