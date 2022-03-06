@@ -4,6 +4,29 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+      maxWidth: {
+         '20rem': '20rem',
+      },
+      minWidth: {
+         '13rem': '13rem',
+      },
+    fontSize: {
+         'super-tiny': '.6rem',
+         'tiny': '.8rem',
+         'base': '1rem',
+         'lg': '1.125rem',
+         'xl': '1.3rem',
+         '2xl': '1.5rem',
+         '3xl': '2rem',
+         '4xl': '2.5rem',
+         '5xl': '3rem',
+         '6xl': '4rem',
+         '7xl': '4.6rem',
+         '8xl': '6rem',
+         '9xl': '8rem',
+         'sxxl': '12rem',
+         'fulid': '7vw'
+      },
      screens: {
       'tiny': '260px',
       // => @media (min-width: 260px) { ... }
@@ -41,7 +64,13 @@ module.exports = {
       danger: "#FF6A6A",
       secondaryDanger: "#FFD8D8"
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+          mainText: ['Proxima-Nova-Bold', 'sans-serif'],
+          secondaryMainText: ["ProximaNova-Regular", 'sans-serif'],
+          primaryHeading: ['Proxima-Nova-Black', 'sans-serif'],
+        },
+    },
   },
   plugins: [],
 }

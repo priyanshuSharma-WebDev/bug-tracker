@@ -12,18 +12,6 @@
 
 
 
-@font-face {
-  font-family: "ProximaNova-Regular.otf";
-  src: url("./Fonts/Proxima-Nova-Font/ProximaNova-Regular.otf");
-}
-@font-face {
-  font-family: "Proxima\ Nova\ Black.otf";
-  src: url("./Fonts/Proxima-Nova-Font/Proxima\ Nova\ Black.otf");
-}
-@font-face {
-  font-family: "Proxima\ Nova\ Alt\ Bold.otf";
-  src: url("./Fonts/Proxima-Nova-Font/Proxima\ Nova\ Alt\ Bold.otf");
-}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -52,8 +40,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-  font-family: "Proxima\ Nova\ Alt\ Bold.otf";
-  min-height: calc(100vh - 52px);
+	font-family: "Proxima-Nova-Bold.otf";
+	min-height: calc(100vh - 52px);
 	background-color: #18171F;
 }
 ol, ul {
