@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Home from "./Pages/Home/index"
 import { FiMenu, FiActivity, FiFolder, FiGlobe, FiX } from "react-icons/fi"
 import { IconContext } from "react-icons";
 import date from 'date-and-time';
