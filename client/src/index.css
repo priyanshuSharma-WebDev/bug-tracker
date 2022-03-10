@@ -40,8 +40,10 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	font-family: "Proxima-Nova-Bold.otf";
-	min-height: calc(100vh - 52px);
+	
+      font-family: "ProximaNova-Bold";
+
+	min-height: calc(100vh - 120px);
 	background-color: #18171F;
 }
 ol, ul {

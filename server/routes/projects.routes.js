@@ -20,26 +20,33 @@ const Router = express.Router()
 
 Router.post("/create",Authentication, async (req,res,next) => {
     try {
+
         if(!Object.keys(req.body).length && req.body.constructor === Object) {
             throw new BadRequest("Missing: Request body content")
         }
+
         if(req.user.isHaveProject) {
-            throw new BadRequest("User already have a project.")
+            throw new BadRequest("User already have a active project.")
         }
+
         const updateProp = {
             isAdmin: true,
             isHaveProject: true
         }
         
         await updateUserProperty(req.user,updateProp).save()
+
         const project = new projectsModal({
             ...req.body,
             users: req.user._id
         })
+
         await project.save()
+
         res.status(201).json({
             message: "New Project created"
         })
+
     }
     catch(e) {
         next(e)

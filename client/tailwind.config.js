@@ -4,30 +4,35 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-      maxWidth: {
-         '20rem': '20rem',
-      },
-      minWidth: {
-         '13rem': '13rem',
-      },
+    maxWidth: {
+      '20rem': '20rem',
+      'charWtiny': '80px',
+      'charWnormal': '120px'
+    },
+    minWidth: {
+      '13rem': '13rem',
+    },
+    minHeight: {
+      '20rem': '20rem'
+    },
     fontSize: {
-         'super-tiny': '.6rem',
-         'tiny': '.8rem',
-         'base': '1rem',
-         'lg': '1.125rem',
-         'xl': '1.3rem',
-         '2xl': '1.5rem',
-         '3xl': '2rem',
-         '4xl': '2.5rem',
-         '5xl': '3rem',
-         '6xl': '4rem',
-         '7xl': '4.6rem',
-         '8xl': '6rem',
-         '9xl': '8rem',
-         'sxxl': '12rem',
-         'fulid': '7vw'
-      },
-     screens: {
+      'super-tiny': '.6rem',
+      'tiny': '.8rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.3rem',
+      '2xl': '1.5rem',
+      '3xl': '2rem',
+      '4xl': '2.5rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '4.6rem',
+      '8xl': '6rem',
+      '9xl': '8rem',
+      'sxxl': '12rem',
+      'fulid': '7vw'
+    },
+    screens: {
       'tiny': '260px',
       // => @media (min-width: 260px) { ... }
 
@@ -66,10 +71,14 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-          mainText: ['Proxima-Nova-Bold', 'sans-serif'],
-          secondaryMainText: ["ProximaNova-Regular", 'sans-serif'],
-          primaryHeading: ['Proxima-Nova-Black', 'sans-serif'],
-        },
+        bodyText: ['ProximaNova-Bold', 'sans-serif'],
+        primaryHeading: ['ProximaNova-Black', 'sans-serif'],
+        secondaryHeading: ['ProximaNova-Regular', 'sans-serif'],
+     },
+      height: {
+        '26rem': '26rem',
+        '23rem': '23rem'
+      }
     },
   },
   plugins: [],
