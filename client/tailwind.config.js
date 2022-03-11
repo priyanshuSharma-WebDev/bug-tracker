@@ -7,7 +7,8 @@ module.exports = {
     maxWidth: {
       '20rem': '20rem',
       'charWtiny': '80px',
-      'charWnormal': '120px'
+      'charWnormal': '120px',
+      '42rem': '42rem'
     },
     minWidth: {
       '13rem': '13rem',
@@ -39,6 +40,9 @@ module.exports = {
       'normal': '360px',
       // => @media (min-width: 360px) { ... }
 
+      'semiNormal': '420px',
+      // => @media (min-width: 360px) { ... }
+
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
@@ -67,16 +71,18 @@ module.exports = {
       accentDarkBg: "#3A3940",
       success: "#4BCA81",
       danger: "#FF6A6A",
-      secondaryDanger: "#FFD8D8"
+      secondaryDanger: "#FFD8D8",
+      black: "#000"
     },
     extend: {
       fontFamily: {
         bodyText: ['ProximaNova-Bold', 'sans-serif'],
         primaryHeading: ['ProximaNova-Black', 'sans-serif'],
-        secondaryHeading: ['ProximaNova-Regular', 'sans-serif'],
+        RegularFont: ['ProximaNova-Regular', 'sans-serif'],
      },
       height: {
         '26rem': '26rem',
+        '38rem': '38rem',
         '23rem': '23rem'
       }
     },

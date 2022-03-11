@@ -12,7 +12,7 @@ export default function Navbar() {
 
 
   return (
-      <nav className={`nav flex px-4 h-12 justify-between items-center fixed top-0 left-0 w-full border-b-2 border-solid border-b-borderColor bg-mainBackgroundDarkColor`}>
+      <nav className={`nav flex px-4 h-14 justify-between items-center fixed top-0 left-0 w-full border-b-2 border-solid border-b-borderColor bg-mainBackgroundDarkColor`}>
         <Sidebar animate={animate}  />
         <div className='flex h-full items-center justify-center'>
           <button onClick={() => {
@@ -24,7 +24,7 @@ export default function Navbar() {
           </button>
           <div className='nav-logo__custom-style__small  w-7 h-7 rounded-md bg-gradient-to-tr from-[#f977ce] to-[#c373f2]  mr-2'>
           </div>
-          <h1 className="text-tiny">Kira</h1>
+          <h1 className="text-tiny sm:text-base md:text-lg">Kira</h1>
         </div>
           <Profile />
         {/* <a className='text-mainAccentColor underline text-tiny' href="http://" target="_blank" rel="noopener noreferrer">explore</a> */}

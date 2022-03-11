@@ -5,6 +5,7 @@ const projectsSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    topic: [String],
     users: [{}]
 },{
     timestamps: true
