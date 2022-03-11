@@ -18,7 +18,7 @@ function Home() {
         {/* this space is for filter btn */}
 
       </div>
-      <div className='rounded-2xl w-5/6 h-26rem sm:h-38rem min-h-20rem mx-auto max-w-42rem border-2 border-solid border-borderColor mt-16 py-2 bg-secondaryBackgroundDarkColor' >
+      <div className='rounded-2xl w-5/6 h-26rem sm:h-38rem min-h-20rem mx-auto max-w-70rem border-2 border-solid border-borderColor mt-16 py-2 bg-secondaryBackgroundDarkColor' >
         <div className='scrollable overflow-auto w-full h-full bg-secondaryBackgroundDarkColor  rounded-xl z-0'>
           {
             !isOn ? (

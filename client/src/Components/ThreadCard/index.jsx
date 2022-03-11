@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons';
 
 function Thread() {
   return (
-    <div className='w-full h-12 sm:h-14 border-b-2 border-solid border-b-borderColor flex items-center justify-between pl-3 cursor-pointer transition-all hover:bg-mainButtonColor/10'>
+    <div className='w-full h-12 sm:h-20 sm:px-12 border-b-2 border-solid border-b-borderColor flex items-center justify-between pl-3 cursor-pointer transition-all hover:bg-mainButtonColor/10'>
         <h3 className='text-base text-mainTextColor cursor-pointer whitespace-nowrap overflow-hidden text-ellipsis max-w-charWtiny normal:max-w-charWnormal sm:overflow-visible sm:text-left sm:max-w-none sm:text-lg'>Some thread name</h3>
         <span className='text-super-tiny text-secondaryTextColor cursor-pointer sm:text-tiny'>10 Mar 2022</span>
         <div className='flex h-full items-center justify-around'>

@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App text-mainTextColor text-purple-600 relative pb-16">
       <Navbar />
-      <Home />
+      <Project />
     </div>
   )
 }

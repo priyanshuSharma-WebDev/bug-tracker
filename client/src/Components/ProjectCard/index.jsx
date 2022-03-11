@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons';
 
 function ProjectCard() {
     return (
-        <div className='w-full h-12 sm:h-16 border-b-2 border-solid border-b-borderColor flex items-center justify-between px-3 cursor-pointer transition-all hover:bg-mainButtonColor/10'>
+        <div className='w-full h-12 sm:h-20 sm:px-12 border-b-2 border-solid border-b-borderColor flex items-center justify-between px-3 cursor-pointer transition-all hover:bg-mainButtonColor/10'>
           <div className='flex justify-between items-center'>
               <IconContext.Provider value={{ className: "text-success mr-3 w-4 h-4 sm:w-5 sm:h-5" }}>
                 <FaReact />

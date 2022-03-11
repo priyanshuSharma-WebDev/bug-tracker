@@ -8,13 +8,15 @@ module.exports = {
       '20rem': '20rem',
       'charWtiny': '80px',
       'charWnormal': '120px',
-      '42rem': '42rem'
+      '42rem': '42rem',
+      '70rem': '70rem'
     },
     minWidth: {
       '13rem': '13rem',
     },
     minHeight: {
-      '20rem': '20rem'
+      '20rem': '20rem',
+      '30rem': '30rem'
     },
     fontSize: {
       'super-tiny': '.6rem',
