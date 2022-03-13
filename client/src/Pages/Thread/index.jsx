@@ -19,7 +19,7 @@ function Thread() {
         <p className='ml-4'>ID: <span className='text-secondaryTextColor font-RegularFont font-normal'>0x9k3jrwo3</span></p>
         <div className='w-full bg-secondaryBackgroundDarkColor rounded-2xl border-2 border-solid border-borderColor mt-2 p-8 md:py-8 md:px-16 semiNormal:grid semiNormal:grid-cols-3 semiNormal:gap-6 sm:grid-cols-4 sm:gap-6 max-w-70rem'>
           <div className='mt-2 mb-6 sm:mb-0 sm:mt-0 sm:flex sm:flex-col sm:items-start sm:justify-center semiNormal:col-span-3 sm:col-span-4'>
-            <img className='w-fulll h-full md:w-4/5 md:block md:mx-auto md:h-26rem object-cover rounded-lg' src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1492&q=80" alt="thread image source" />
+            <img className='w-full h-full  md:block md:mx-auto md:h-26rem object-cover rounded-lg' src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1492&q=80" alt="thread image source" />
           </div>
 
           <div className='mt-2 semiNormal:mt-0 semiNormal:flex semiNormal:flex-col semiNormal:items-start semiNormal:justify-center'>

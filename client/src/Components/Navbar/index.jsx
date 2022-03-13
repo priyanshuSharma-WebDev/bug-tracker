@@ -4,6 +4,7 @@ import { IconContext } from "react-icons";
 import  "./Navbar.css"
 import Sidebar from "./Sidebar/index";
 import Profile from "../Profile/index";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
@@ -18,13 +19,13 @@ export default function Navbar() {
           <button onClick={() => {
             setAnimate(!animate)
           }}>
-            <IconContext.Provider value={{ className: "text-mainButtonColor mr-3 md:mr-8 w-6 h-6" }}>
+            <IconContext.Provider value={{ className: "text-mainButtonColor mr-3 md:mr-6 w-6 h-6" }}>
               {animate ? <FiX /> : <FiMenu />}
             </IconContext.Provider>
           </button>
-          <div className='nav-logo__custom-style__small  w-7 h-7 rounded-md bg-gradient-to-tr from-[#f977ce] to-[#c373f2]  mr-2'>
-          </div>
-          <h1 className="text-tiny sm:text-base md:text-lg">Kira</h1>
+          <Link to="/" className='nav-logo__custom-style__small  w-7 h-7 rounded-md bg-gradient-to-tr from-[#f977ce] to-[#c373f2]  mr-2'>
+          </Link>
+          <Link to="/" className="text-tiny sm:text-base md:text-lg">Kira</Link>
         </div>
           <Profile />
         {/* <a className='text-mainAccentColor underline text-tiny' href="http://" target="_blank" rel="noopener noreferrer">explore</a> */}

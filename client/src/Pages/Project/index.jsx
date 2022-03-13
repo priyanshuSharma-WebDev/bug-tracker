@@ -15,7 +15,7 @@ function Project() {
           </IconContext.Provider>
         </button>
       </div>
-      <div className='rounded-2xl w-full h-26rem sm:h-38rem min-h-20rem mx-auto border-2 border-solid border-borderColor mt-16 py-2 bg-secondaryBackgroundDarkColor' >
+      <div className='rounded-2xl w-full h-26rem sm:h-46rem min-h-20rem mx-auto border-2 border-solid border-borderColor mt-16 py-2 bg-secondaryBackgroundDarkColor' >
         <div className='scrollable overflow-auto w-full h-full bg-secondaryBackgroundDarkColor  rounded-xl z-0'>
               <>
                 <ProjectCard />

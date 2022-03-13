@@ -1,6 +1,6 @@
 import React from 'react'
 import date from 'date-and-time';
-import { FiFolder, FiGlobe } from "react-icons/fi"
+import { FiFolder, FiGlobe, FiActivity } from "react-icons/fi"
 import { IconContext } from 'react-icons';
 import { motion } from "framer-motion";
 
@@ -43,6 +43,12 @@ function Sidebar({ animate }) {
                             <FiFolder />
                         </IconContext.Provider>
                         <span className='text-base text-mainTextColor'>Your Work</span>
+                    </li>
+                    <li className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all mb-2 hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
+                        <IconContext.Provider value={{ className: "text-secondaryTextColor mr-3 w-4 h-4" }}>
+                            <FiActivity />
+                        </IconContext.Provider>
+                        <span className='text-base text-mainTextColor'>Statistics</span>
                     </li>
                 </ul>
             </div>

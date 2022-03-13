@@ -9,7 +9,7 @@ function Drawer({ isDrawerOn }) {
   return (
     <div
       data-ison={isDrawerOn}
-      className='drawer absolute w-60 h-auto pb-8 right-0 top-7 rounded-lg border-2 border-solid border-borderColor bg-secondaryBackgroundDarkColor' >
+      className='drawer absolute w-60 h-auto pb-8 right-0 top-7 rounded-lg border-2 border-solid border-borderColor bg-secondaryBackgroundDarkColor sm:w-72' >
       <div className='flex flex-col items-center justify-center w-full mt-8 '>
         <img className='block w-20 h-20 object-cover rounded-full outline-4 outline outline-mainAccentColor outline-offset-4' src={ProfileImg} alt="profile picture" />
         <div className='mt-6'>
