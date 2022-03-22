@@ -1,14 +1,22 @@
+.drawer[data-ison="false"] {
+   transform: scale(0.5); 
+   pointer-events: none;
+   opacity: 0;
+   transition: all 0.4s cubic-bezier(.8,-.5,.2,1.4);
+   transform-origin: top right;
+}
+
 .drawer[data-ison="true"] {
-   transform: scale(1); 
+   transform: scale(0.8); 
    opacity: 1;
    pointer-events: all;
    transition: all 0.4s cubic-bezier(.8,-.5,.2,1.4);
    transform-origin: top right;
 }
-.drawer[data-ison="false"] {
-   transform: scale(0.6); 
-   pointer-events: none;
-   opacity: 0;
-   transition: all 0.4s cubic-bezier(.8,-.5,.2,1.4);
-   transform-origin: top right;
+
+
+@media screen and (min-width: 640px) {
+   .drawer[data-ison="true"] {
+      transform: scale(0.9); 
+   }
 }
