@@ -26,6 +26,7 @@ const Router = express.Router();
  *   [*] /POST "/bugUpload" - upload images related to the bug
  *   [*] - filtering data
  *   TODO - [] Add a comment section in a bug
+ *   TODO - [] Project Assignement
  */
 
 /**
