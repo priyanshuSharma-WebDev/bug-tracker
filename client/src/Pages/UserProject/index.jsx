@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FiMoreHorizontal } from "react-icons/fi"
-import { FaBomb, FaCaretUp, FaGlobeAmericas, FaLock } from "react-icons/fa"
+import { FaBomb, FaCaretUp, FaGlobeAmericas, FaLock, FaFilter, FaUserPlus, FaUser } from "react-icons/fa"
 import "./UserProject.css"
 import Thread from '../../Components/ThreadCard'
 
@@ -17,12 +17,20 @@ function UserProject() {
         </button>
       </div>
       <div className='flex flex-col  items-center justify-between  mt-2'>
-        <input className='block w-full py-3 rounded-lg pl-6 text-black text-lg mb-4' type="text" placeholder='Search' />
+        <input className='block w-full py-3 rounded-lg pl-6 text-black text-lg mb-4 bg-mainBackgroundDarkColor border-2 border-solid border-secondaryTextColor' type="text" placeholder='Search' />
         <div className='w-full flex items-center justify-between'>
           <button className='h-12 w-24 rounded-lg text-mainTextColor bg-mainAccentColor shadow-md cursor-pointer '>Create</button>
-          <div>
-            <button>Invite</button>
-            <button>Filter</button>
+          <div className='flex items-center justify-between'>
+            <button className='mr-2 underline w-10 h-10 flex items-center justify-center transition-all hover:bg-mainTextColor/10 rounded-full'>
+              <IconContext.Provider value={{ className: "text-secondaryTextColor w-5 h-5" }}>
+                <FaUserPlus />
+              </IconContext.Provider>
+            </button>
+            <button className=' underline w-10 h-10 flex items-center justify-center transition-all hover:bg-mainTextColor/10 rounded-full'>
+              <IconContext.Provider value={{ className: "text-secondaryTextColor w-4 h-4" }}>
+                <FaFilter />
+              </IconContext.Provider>
+            </button>
           </div>
         </div>
         <div>
