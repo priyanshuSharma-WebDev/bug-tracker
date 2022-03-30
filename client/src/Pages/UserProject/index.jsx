@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FiMoreHorizontal } from "react-icons/fi"
-import { FaBomb, FaCaretUp, FaGlobeAmericas, FaLock, FaFilter, FaUserPlus, FaUser } from "react-icons/fa"
+import {  FaFilter, FaUserPlus } from "react-icons/fa"
 import "./UserProject.css"
 import Thread from '../../Components/ThreadCard'
 
@@ -17,7 +17,7 @@ function UserProject() {
         </button>
       </div>
       <div className='flex flex-col  items-center justify-between  mt-2'>
-        <input className='block w-full py-3 rounded-lg pl-6 text-black text-lg mb-4 bg-mainBackgroundDarkColor border-2 border-solid border-secondaryTextColor' type="text" placeholder='Search' />
+        <input className='block w-full py-3 rounded-lg pl-6 text-lg mb-4 bg-mainBackgroundDarkColor border-2 border-solid border-secondaryTextColor focus:border-transparent bg-mainTextColor/10' type="text" placeholder='&#128269; Search' />
         <div className='w-full flex items-center justify-between'>
           <button className='h-12 w-24 rounded-lg text-mainTextColor bg-mainAccentColor shadow-md cursor-pointer '>Create</button>
           <div className='flex items-center justify-between'>
