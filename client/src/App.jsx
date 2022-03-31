@@ -17,7 +17,7 @@ import Reset_Password from "./Pages/Auth/Reset_Password/index"
 function App() {
 
   return (
-    <div className="App text-mainTextColor text-purple-600 relative pb-16">
+    <div className="App text-mainTextColor text-purple-600 relative pb-16 h-screen">
       <BrowserRouter>
         <Navbar />
         <Routes>
