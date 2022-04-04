@@ -1,3 +1,4 @@
 .SignUp-form input::placeholder {
     font-size: 1rem;
+    text-overflow: ellipsis;
 }
