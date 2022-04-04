@@ -1,4 +1,4 @@
-.SignUp-form input::placeholder {
+.Auth-form input::placeholder {
     font-size: 1rem;
     text-overflow: ellipsis;
 }
