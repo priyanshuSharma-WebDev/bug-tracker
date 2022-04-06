@@ -11,10 +11,10 @@ function SignIn() {
       </div>
       <form className='Auth-form mt-8 flex flex-col justify-end items-end'>
           <div className=' w-fit flex flex-col'>
-            <label htmlFor="username-email"><input id="username-email" className='h-16 normal:h-20 mb-2 w-64 normal:w-72 semiNormal:w-80 md:w-96 rounded-xl bg-secondaryBackgroundDarkColor  text-lg pl-6 pr-3 outline-none' placeholder='@jhonDoe - jhonDoe@gmail.com' type="text" /></label>
-            <label htmlFor="password"><input id="password" className='h-16 normal:h-20 mb-2 w-64 normal:w-72 semiNormal:w-80 md:w-96 rounded-xl bg-secondaryBackgroundDarkColor  text-lg pl-6 outline-none' type="password" placeholder='Password - eg. ljfw3094wojf' /></label>
+            <label htmlFor="username-email"><p className='mb-1 ml-3 opacity-30'>Username/Email</p><input id="username-email" className='h-16 normal:h-20 mb-4 w-64 normal:w-72 semiNormal:w-80 md:w-96 rounded-xl bg-secondaryBackgroundDarkColor  text-lg pl-6 pr-3 outline-none' placeholder='@jhonDoe - jhonDoe@gmail.com' type="text" /></label>
+            <label htmlFor="password"> <p className='mb-1 ml-3 opacity-30'>Password</p><input id="password" className='h-16 normal:h-20 mb-2 w-64 normal:w-72 semiNormal:w-80 md:w-96 rounded-xl bg-secondaryBackgroundDarkColor  text-lg pl-6 outline-none' type="password" placeholder='Password - eg. ljfw3094wojf' /></label>
         </div>
-        <Link to="/Reset_Password" className='mt-0 text-secondaryTextColor mr-3 cursor-pointer'>Forgot Password?</Link>
+        <Link to="/Reset_Password" className='mt-1 text-secondaryTextColor mr-3 cursor-pointer'>Forgot Password?</Link>
         <div className='flex flex-col  items-center justify-center mt-6 w-full'>
           <button type='submit' className='h-16 normal:h-20 text-mainBackgroundDarkColor w-52 normal:w-56 mb-4 bg-mainButtonColor rounded-xl border-none font-bold shadow-lg cursor-pointer transition duration-300 text-lg'>Sign In</button>
           <p className='text-secondaryTextColor text-tiny'>Don't have an account? <Link className='text-mainAccentColor underline cursor-pointer' to="/SignUp">SignUp</Link></p>

@@ -10,7 +10,7 @@
 }
 
 .Auth-form input:focus {
-    /* border: 2px solid ; */
-    box-shadow: 0 0 0 3px rgb(250, 88, 182,0.3);
+    border: 2px solid  transparent;
+    box-shadow: 0 0 0 2px rgb(250, 88, 182,0.3);
     background-color: rgb(250, 88, 182,0.06);
 }
