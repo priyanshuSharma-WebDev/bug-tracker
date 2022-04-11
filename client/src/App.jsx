@@ -14,6 +14,7 @@ import SignIn from "./Pages/Auth/SignIn/index"
 import Activate_Account from "./Pages/Auth/Activate_Account/index"
 import Reset_Password from "./Pages/Auth/Reset_Password/index"
 
+
 function App() {
 
   return (
