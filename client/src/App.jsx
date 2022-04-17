@@ -11,7 +11,6 @@ import {
 import UserProject from "./Pages/UserProject"
 import SignUp from "./Pages/Auth/SignUp/index"
 import SignIn from "./Pages/Auth/SignIn/index"
-import Activate_Account from "./Pages/Auth/Activate_Account/index"
 import Reset_Password from "./Pages/Auth/Reset_Password/index"
 
 
@@ -25,7 +24,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/Activate" element={<Activate_Account />} />
           <Route path="/Reset_Password" element={<Reset_Password />} />
           <Route path="/project" element={<h1 style={{marginTop: "200px", textAlign: "center"}}>It should fetch some bugs here related to the corresponding project:D</h1>} />
           <Route path="/thread" element={<Thread />} />

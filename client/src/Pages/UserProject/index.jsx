@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { IconContext } from 'react-icons'
 import { FiMoreHorizontal } from "react-icons/fi"
 import {  FaFilter, FaSearch, FaUserPlus } from "react-icons/fa"
@@ -17,15 +17,10 @@ function UserProject() {
         </button>
       </div>
       <div className='flex flex-col  items-center justify-between  mt-2'>
-        <input className='block w-full py-3 rounded-lg pl-6 text-lg mb-4 bg-mainBackgroundDarkColor border-2 border-solid border-secondaryTextColor focus:border-transparent bg-mainTextColor/10 semiNormal:hidden' type="text" placeholder='&#128269; Search' />
+        <input className='block w-full py-3 rounded-lg pl-6 text-lg mb-4 border-2 border-solid border-secondaryTextColor/10 bg-secondaryBackgroundDarkColor focus:border-transparent' type="text" placeholder='Search' />
         <div className='w-full flex items-center justify-between semiNormal:mt-6'>
           <button className='h-12 w-24 rounded-lg text-mainTextColor bg-mainAccentColor shadow-md cursor-pointer '>Create</button>
           <div className='flex items-center justify-between'>
-            <button className='mr-2 underline w-10 h-10 flex items-center justify-center transition-all hover:bg-mainTextColor/10 rounded-full'>
-              <IconContext.Provider value={{ className: "text-secondaryTextColor w-5 h-5" }}>
-                <FaSearch />
-              </IconContext.Provider>
-            </button>
             <button className='mr-2 underline w-10 h-10 flex items-center justify-center transition-all hover:bg-mainTextColor/10 rounded-full'>
               <IconContext.Provider value={{ className: "text-secondaryTextColor w-5 h-5" }}>
                 <FaUserPlus />

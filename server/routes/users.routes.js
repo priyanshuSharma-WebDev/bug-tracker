@@ -6,6 +6,7 @@ const {
     UnAuthorized,
 } = require("../utils/error.handling");
 const Authentication = require("../auth/JWT.auth");
+const path = require("path")
 const multer = require("multer");
 const Router = express.Router();
 const bcrypt = require("bcrypt");
@@ -152,7 +153,7 @@ Router.get("/confirm/account/:token", async (req, res, next) => {
             throw new UnAuthorized("Invalid token");
         }
         await new userModal(user.data).save();
-        res.status(201).json(user);
+        res.sendFile(path.resolve('views/test.html'))
     } catch (e) {
         next(e);
     }

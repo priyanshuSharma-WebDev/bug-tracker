@@ -4,6 +4,8 @@ const express = require("express");
 const cors = require("cors")
 const { GeneralError } = require("./utils/error.handling")
 const app = express();
+var jade = require('jade');
+const path = require("path")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -14,7 +16,8 @@ app.use(cors({
     optionsSuccessStatus: 204
 }))
 
-
+ app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'jade');
 
 
 app.use("/api/bugs", require("./routes/bugs.routes"))
