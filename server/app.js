@@ -25,6 +25,11 @@ app.use("/api/users", require("./routes/users.routes"))
 app.use("/api/projects", require("./routes/projects.routes"))
 
 
+// app.get('*',function(req,res){  
+//     res.redirect(`http://localhost:3000/SignIn/`)
+// })
+
+
 app.use((err, req, res, next) => {
     if (err instanceof GeneralError) {
         return res.status(err.getCode()).json({

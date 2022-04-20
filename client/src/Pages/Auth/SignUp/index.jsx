@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUser } from '../../../network-requests/user.request'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import "./Signup.css"
 
 const initialState = {
@@ -14,25 +16,52 @@ const initialState = {
 function SignUp() {
 
   let navigate = useNavigate();
-
-
   const [HandleInput, setHandleInput] = useState(initialState)
 
 
   function ListenForInputChanges(e) {
-      setHandleInput({...HandleInput, [e.target.name]: e.target.value}) 
+    setHandleInput({ ...HandleInput, [e.target.name]: e.target.value })
   }
 
 
   async function ListenForFormSubmit(e) {
     e.preventDefault()
     try {
-      await createUser(HandleInput)
-      setHandleInput(initialState)
-      return navigate("/SignIn")
+      if(JSON.stringify(HandleInput) === JSON.stringify(initialState) ) {
+        return toast.error("Input fields cannot be empty.", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 10000,
+          theme: 'dark',
+          pauseOnHover: true,
+          delay: 200,
+          hideProgressBar: false
+        });
+      }
+      const res = await createUser(HandleInput)
+      if(res.status === 200) {
+        toast.success("Please confirm your email.", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 10000,
+          theme: 'dark',
+          pauseOnHover: true,
+          delay: 200,
+          hideProgressBar: false
+        });
+        setHandleInput(initialState)
+      }
+      else {
+          throw new Error(res.msg)
+      }
     }
-    catch(e) {
-      console.log(e)
+    catch (e) {
+      toast.error(e.message, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 10000,
+        theme: 'dark',
+        pauseOnHover: true,
+        delay: 200,
+        hideProgressBar: false
+      });
     }
   }
 

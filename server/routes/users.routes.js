@@ -154,6 +154,7 @@ Router.get("/confirm/account/:token", async (req, res, next) => {
         }
         await new userModal(user.data).save();
         res.sendFile(path.resolve('views/test.html'))
+
     } catch (e) {
         next(e);
     }
@@ -174,13 +175,13 @@ Router.post("/login", async (req, res, next) => {
                 { username: email_username },
             ],
         });
+        if (!user) {
+            throw new NotFound("User not found");
+        }
         if (user.tokens.length > 2) {
             throw new BadRequest(
                 "You are only allow to login with minimum 3 devices"
             );
-        }
-        if (!user) {
-            throw new NotFound("User not found");
         }
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
@@ -504,5 +505,28 @@ Router.get("/serve/:id/avatar", async (req, res, next) => {
         next(e);
     }
 });
+
+
+Router.post("/findByCred", async (req,res) => {
+    try {
+        if (
+            Object.keys(req.body).length === 0 &&
+            req.body.constructor === Object
+        ) {
+            throw new BadRequest("Missing: request body content");
+        }
+        const user = req.body;
+        const checkUser = await userModal.findOne({
+            $or: [
+                { email: user.email },
+                { username: user.username },
+            ]
+        });
+        res.status(200).json(checkUser)
+    }
+    catch(e) {
+        next(e)
+    }
+})
 
 module.exports = Router;

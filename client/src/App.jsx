@@ -12,6 +12,7 @@ import UserProject from "./Pages/UserProject"
 import SignUp from "./Pages/Auth/SignUp/index"
 import SignIn from "./Pages/Auth/SignIn/index"
 import Reset_Password from "./Pages/Auth/Reset_Password/index"
+import {ToastContainer} from "react-toastify"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     <div className="App text-mainTextColor text-purple-600 relative pb-16 h-screen">
       <BrowserRouter>
         <Navbar />
+      <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/SignUp" element={<SignUp />} />

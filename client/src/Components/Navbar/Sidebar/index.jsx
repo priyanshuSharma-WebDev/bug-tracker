@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons';
 import { motion } from "framer-motion";
 import { Link } from 'react-router-dom';
 
-function Sidebar({ animate }) {
+function Sidebar({ animate, setAnimate }) {
 
 
     const variants = {
@@ -33,19 +33,25 @@ function Sidebar({ animate }) {
                 </div>
 
                 <ul className='w-full mt-4 '>
-                    <Link to="/" className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
-                        <IconContext.Provider value={{ className: "text-secondaryTextColor mr-3 w-4 h-4" }}>
+                    <Link to="/" onClick={() => {
+                            setAnimate(!animate)
+                        }} className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
+                        <IconContext.Provider  value={{ className: "text-secondaryTextColor mr-3 w-4 h-4" }}>
                             <FiGlobe />
                         </IconContext.Provider>
                         <span className='text-base text-mainTextColor'>Explore</span>
                     </Link>
-                    <Link to="/UserProject" className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all mb-2 hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
+                    <Link to="/UserProject" onClick={() => {
+                            setAnimate(!animate)
+                    }} className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all mb-2 hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
                         <IconContext.Provider value={{ className: "text-secondaryTextColor mr-3 w-4 h-4" }}>
                             <FiFolder />
                         </IconContext.Provider>
                         <span className='text-base text-mainTextColor'>Your Work</span>
                     </Link>
-                    <Link to="/activity" className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all mb-2 hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
+                    <Link to="/activity" onClick={() => {
+                            setAnimate(!animate)
+                    }} className='text-lg h-12 w-11/12 cursor-pointer mx-auto flex items-center justify-start transition-all mb-2 hover:border-transparent pl-4 rounded-lg hover:bg-mainButtonColor/10'>
                         <IconContext.Provider value={{ className: "text-secondaryTextColor mr-3 w-4 h-4" }}>
                             <FiActivity />
                         </IconContext.Provider>

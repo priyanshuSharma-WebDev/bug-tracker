@@ -14,7 +14,7 @@ export default function Navbar() {
 
   return (
       <nav className={`nav flex pl-2 pr-6 h-14 justify-between items-center fixed top-0 left-0 w-full border-b-2 border-solid border-b-borderColor bg-mainBackgroundDarkColor md:px-20`}>
-        <Sidebar animate={animate}  />
+        <Sidebar animate={animate} setAnimate={setAnimate}  />
         <div className={`flex h-full items-center justify-center px-4 rounded-xl transition duration-300 transform ${animate && "bg-mainButtonColor/10 scale-75"}`}>
           <button onClick={() => {
             setAnimate(!animate)
