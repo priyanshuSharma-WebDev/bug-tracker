@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInUser } from '../../../network-requests/user.request'
 import { toast } from "react-toastify"
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser } from '../../../redux-slices/user.slice'
 import "./SignIn.css"
 
 
@@ -14,6 +16,8 @@ function SignIn() {
 
   let navigate = useNavigate();
   const [HandleInput, setHandleInput] = useState(initialState)
+  const data = useSelector((state) => state.user)
+  const dispatch = useDispatch()
 
 
   function ListenForInputChanges(e) {
@@ -34,8 +38,8 @@ function SignIn() {
           hideProgressBar: false
         });
       }
-      const {data:{user:{fullName},token}} = await signInUser(HandleInput)
-      toast.success("Welcome "+fullName, {
+      const {data:{user,token}} = await signInUser(HandleInput)
+      toast.success("Welcome "+user.fullName, {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 10000,
         theme: 'dark',
@@ -44,6 +48,7 @@ function SignIn() {
         hideProgressBar: false
       });
       setHandleInput(initialState)
+      dispatch(setUser({user,token}))
       return navigate("/")
     }
     catch (e) {

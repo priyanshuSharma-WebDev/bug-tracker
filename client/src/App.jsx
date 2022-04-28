@@ -13,12 +13,16 @@ import SignUp from "./Pages/Auth/SignUp/index"
 import SignIn from "./Pages/Auth/SignIn/index"
 import Reset_Password from "./Pages/Auth/Reset_Password/index"
 import {ToastContainer} from "react-toastify"
+import { useSelector } from 'react-redux';
+import { store } from './store'
+import { Provider } from 'react-redux'
 
 
 function App() {
 
   return (
     <div className="App text-mainTextColor text-purple-600 relative pb-16 h-screen">
+       <Provider store={store}>
       <BrowserRouter>
         <Navbar />
       <ToastContainer />
@@ -32,6 +36,7 @@ function App() {
           <Route path="/UserProject" element={<UserProject />} />
         </Routes>
       </BrowserRouter>
+      </Provider>
     </div>
   )
 }
