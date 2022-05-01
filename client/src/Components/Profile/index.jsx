@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import ProfileImg from "../../Assets/Images/profile.jpg"
 import Drawer from './Drawer/index'
 
-function Profile() {
+function Profile({user}) {
 
     const [isDrawerOn, setDrawerIsOn] = useState(false)
     const toggleSwitch = () => setDrawerIsOn(!isDrawerOn);
@@ -12,7 +12,7 @@ function Profile() {
        <button onClick={toggleSwitch} className='h-5 outline-2 outline outline-mainAccentColor outline-offset-2  w-5 rounded-full overflow-hidden'>
             <img className='w-full h-full object-cover' src={ProfileImg} alt="Profile image" />
        </button> 
-       <Drawer isDrawerOn={isDrawerOn} setDrawerIsOn={setDrawerIsOn} />
+       <Drawer user={user} isDrawerOn={isDrawerOn} setDrawerIsOn={setDrawerIsOn} />
     </div>
   )
 }
