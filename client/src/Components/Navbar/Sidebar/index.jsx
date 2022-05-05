@@ -25,6 +25,10 @@ function Sidebar({ animate, setAnimate }) {
                 x: { type: "tween" },
                 default: { duration: 0.6 }
             }}
+        onClick={e => {
+          // do not close modal if anything inside modal content is clicked
+          e.stopPropagation();
+        }}
             className={`${animate ? "pointer-events-auto" : "pointer-events-none"} fixed top-16 left-2 w-56 normal:w-64 sm:w-72 bg-secondaryBackgroundDarkColor border-2 border-solid border-borderColor bottom-4 rounded-2xl shadow-xl flex flex-col justify-between`}
         >
             <div>

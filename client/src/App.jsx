@@ -30,12 +30,12 @@ function App() {
       <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
-          <ProtectedRoute path="/SignUp">
+          {/* <ProtectedRoute path="/SignUp">
             <SignUp />
           </ProtectedRoute>
           <ProtectedRoute path="/SignIn">
             <SignIn />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <Route path="/Reset_Password" element={<Reset_Password />} />
           <Route path="/project" element={<h1 style={{marginTop: "200px", textAlign: "center"}}>It should fetch some bugs here related to the corresponding project:D</h1>} />
           <Route path="/thread" element={<Thread />} />
