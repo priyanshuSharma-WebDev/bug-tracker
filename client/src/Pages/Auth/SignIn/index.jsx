@@ -38,8 +38,10 @@ function SignIn() {
           hideProgressBar: false
         });
       }
-      const {data:{user,token}} = await signInUser(HandleInput)
-      toast.success("Welcome "+user.fullName, {
+      const {data} = await signInUser(HandleInput)
+      setHandleInput(initialState)
+      dispatch(setUser({...data}))
+      toast.success("Welcome "+data?.user?.fullName, {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 10000,
         theme: 'dark',
@@ -47,11 +49,10 @@ function SignIn() {
         delay: 200,
         hideProgressBar: false
       });
-      setHandleInput(initialState)
-      dispatch(setUser({user,token}))
-      return navigate("/")
+      window.location.href="/"
     }
     catch (e) {
+      console.error(e)
       toast.error(e.message === "" ? "Something bad happend on server side.": e.message, {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 10000,

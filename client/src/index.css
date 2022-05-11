@@ -40,11 +40,10 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	
-      font-family: "ProximaNova-Bold";
-
+	font-family: "ProximaNova-Bold";
 	min-height: calc(100vh - 120px);
 	background-color: #18171F;
+	overflow: hidden;
 }
 ol, ul {
 	list-style: none;
@@ -62,4 +61,8 @@ table {
 	border-spacing: 0;
 }
 
-
+@media screen and (max-width: 500px) {
+	body {
+		overflow: visible;	
+	}	
+}

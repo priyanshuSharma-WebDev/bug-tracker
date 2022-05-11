@@ -37,6 +37,16 @@ function SignUp() {
           hideProgressBar: false
         });
       }
+      if(HandleInput.password !== HandleInput.confirmPassword) {
+        return toast.error("password and confirm password doesn't match.", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 10000,
+          theme: 'dark',
+          pauseOnHover: true,
+          delay: 200,
+          hideProgressBar: false
+        });
+      }
       const res = await createUser(HandleInput)
       if(res.status === 200) {
         toast.success("Please confirm your email.", {

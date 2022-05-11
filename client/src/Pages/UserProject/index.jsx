@@ -5,8 +5,10 @@ import {  FaFilter, FaSearch, FaUserPlus } from "react-icons/fa"
 import "./UserProject.css"
 import Thread from '../../Components/ThreadCard'
 
-function UserProject() {
+function UserProject({user,isAuth}) {
   return (
+    user && isAuth ? (
+
     <div className='mt-20 w-5/6 mx-auto sm:mt-32 max-w-70rem'>
       <div className='flex justify-between items-center'>
         <h1 className='font-primaryHeading font-black text-lg  underline'>Project Name -</h1>
@@ -43,6 +45,9 @@ function UserProject() {
         </div>
       </div>
     </div>
+    ): (
+      <h1 className='mt-28 text-6xl font-black text-mainTextColor text-center'>Please create account first.</h1>
+    )
   )
 }
 

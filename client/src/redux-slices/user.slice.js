@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = JSON.parse(localStorage.getItem('user')) || {
   isAuth: false,
   user: null,
-  token: "" 
+  token: null 
 } 
 
 export const userSlice = createSlice({
@@ -12,13 +12,15 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       const { user,token } = action.payload;
-      state.user = user;
-      state.token = token;
+      state = {...state,user: user};
+      state = {...state,token: token};
       if (user === null) {
-          state.isAuth = false;
+          state = {...state, isAuth: false};
       } else {
-          state.isAuth = true;
+          state = {...state, isAuth: true};
       }
+
+      console.log(state)
       localStorage.setItem('user',JSON.stringify(state))
     }
   }

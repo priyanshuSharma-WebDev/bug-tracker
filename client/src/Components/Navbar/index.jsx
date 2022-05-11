@@ -42,7 +42,7 @@ export default function Navbar({ user, isAuth }) {
       </div>
       {
         !isAuth ? (
-          <a className='text-mainAccentColor underline text-tiny' href="http://" target="_blank" rel="noopener noreferrer">explore</a>
+          <Link className='text-mainAccentColor underline text-tiny' to="/SignIn" >SignUp/In</Link>
         ) : (
           <Profile user={user} />
         )
