@@ -14,4 +14,34 @@ export const createUser = async (data) => {
         return {msg: e.message, status: 500};
     }
 };
-export const signInUser = (data) => axios.post("http://localhost:5000/api/users/login", data);
+
+
+
+export const signInUser = async (data) => {
+    try {
+        return await axios.post("http://localhost:5000/api/users/login", data)
+    }
+    catch(e) {
+        return {msg: e.message, status: 500};
+    }
+};
+
+
+export const getLogInUser = async () => {
+
+    const { token } = JSON.parse(localStorage.getItem('user'));
+
+    try {
+        const {data} = await axios.get("http://localhost:5000/api/users/me", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        let user = {...data}
+        user = {user,token}
+        return user;
+    }
+    catch (e) {
+        return { msg: e.message, status: 500 };
+    }
+}

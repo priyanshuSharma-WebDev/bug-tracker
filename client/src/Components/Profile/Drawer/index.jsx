@@ -4,7 +4,7 @@ import { FiUser,FiSettings } from "react-icons/fi"
 import ProfileImg from "../../../Assets/Images/profile.jpg"
 import "./Drawer.css"
 
-function Drawer({ isDrawerOn,user:{username} }) {
+function Drawer({ isDrawerOn,user }) {
 
   return (
     <div
@@ -13,7 +13,7 @@ function Drawer({ isDrawerOn,user:{username} }) {
       <div className='flex flex-col items-center justify-center w-full mt-8 '>
         <img className='block w-20 h-20 object-cover rounded-full outline-4 outline outline-mainAccentColor outline-offset-4' src={ProfileImg} alt="profile picture" />
         <div className='mt-6'>
-          <h3>@{username}</h3>
+          <h3>@{user?.username}</h3>
           <p className='text-tiny text-center text-secondaryTextColor mt-2'>🎂 10 Mar 2022</p>
         </div>
       </div>

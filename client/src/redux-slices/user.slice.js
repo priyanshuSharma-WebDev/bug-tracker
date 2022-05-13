@@ -11,6 +11,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
+      console.log(action.payload)
       const { user,token } = action.payload;
       state = {...state,user: user};
       state = {...state,token: token};
@@ -20,7 +21,6 @@ export const userSlice = createSlice({
           state = {...state, isAuth: true};
       }
 
-      console.log(state)
       localStorage.setItem('user',JSON.stringify(state))
     }
   }

@@ -20,7 +20,6 @@ const Router = express.Router()
 
 Router.post("/create",Authentication, async (req,res,next) => {
     try {
-
         if(!Object.keys(req.body).length && req.body.constructor === Object) {
             throw new BadRequest("Missing: Request body content")
         }
@@ -36,8 +35,11 @@ Router.post("/create",Authentication, async (req,res,next) => {
         
         await updateUserProperty(req.user,updateProp).save()
 
+        req.body = {...req.body, tags: req.body.tags.split(",").map(tag => tag.trim())};
+
         const project = new projectsModal({
-            ...req.body,
+            name: req.body.projectName,
+            topic: req.body.tags,
             users: req.user._id
         })
 
