@@ -82,6 +82,23 @@ Router.get("/project/:id",Authentication,async (req,res,next) => {
     }
 })
 
+
+
+Router.get("/my",Authentication,async (req,res,next) => {
+    const user = req.user;
+    try {
+        const projects = await projectsModal.find({})
+        const userProject = projects.find(pr => pr.users.find(usr => usr.toString() === user._id.toString()));
+        if(userProject === undefined) {
+            throw new BadRequest("Not found!")
+        }
+        res.send(userProject)
+    }
+    catch(e) {
+        next(e)
+    }
+})
+
 /**
  * POST /invite/:project_id?token=jwt_token
  */

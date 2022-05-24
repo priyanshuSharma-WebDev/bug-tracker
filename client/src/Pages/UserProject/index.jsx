@@ -5,16 +5,19 @@ import { FaFilter, FaSearch, FaUserPlus } from "react-icons/fa"
 import "./UserProject.css"
 import Thread from '../../Components/ThreadCard'
 import {Link} from "react-router-dom"
-import { createProject } from '../../network-requests/project.request'
+import { createProject, getProject } from '../../network-requests/project.request'
 import { getLogInUser } from '../../network-requests/user.request'
 import { setUser } from '../../redux-slices/user.slice'
 import { useSelector, useDispatch } from 'react-redux'
+import { setProject } from '../../redux-slices/project.slice'
+import Modal from '../../Components/Modal'
 
 function UserProject({ user, isAuth }) {
 
 
   const [projectInput, setProjectInput] = useState({projectName: "",tags: ""})
   const dispatch = useDispatch()
+  const projectFormStore = useSelector((state) => state.projectSlice)
 
 
   function handleProjectInputs(e) {
@@ -24,12 +27,17 @@ function UserProject({ user, isAuth }) {
 
   async function submitProject(e) {
     e.preventDefault();
-    const projectRes = await createProject(projectInput)
-    const user = await getLogInUser();
-    // console.log("USER: ",user)
-    dispatch(setUser({...user}))
-    window.location.href="/UserProject"
-    // console.log("project: ",projectRes," - user: ", data)
+    try {
+        await createProject(projectInput)
+        const user = await getLogInUser();
+        const userProject = await getProject();
+        dispatch(setUser({...user}))
+        dispatch(setProject(userProject.data))
+        window.location.href="/UserProject"
+    }
+    catch(e) {
+        console.error("Inside - client/src/Pages/UserProject/index.jsx:34",e)
+    }
   }
 
 
@@ -37,9 +45,10 @@ function UserProject({ user, isAuth }) {
   return (
     user && isAuth ? (
       user.isHaveProject ? (
-        <div className='mt-20 w-5/6 mx-auto sm:mt-32 max-w-70rem'>
+        <div className='mt-20 w-5/6 mx-auto sm:mt-32 max-w-70rem relative'>
+          <Modal />
           <div className='flex justify-between items-center'>
-            <h1 className='font-primaryHeading font-black text-lg  underline'>Project Name -</h1>
+            <h1 className='font-primaryHeading font-black text-lg  underline'>{projectFormStore?.name !== undefined && projectFormStore?.name } - </h1>
             <button className='rounded-full p-2 hover:bg-mainButtonColor/10 transition-all'>
               <IconContext.Provider value={{ className: "text-secondaryTextColor w-6 h-6" }}>
                 <FiMoreHorizontal />
